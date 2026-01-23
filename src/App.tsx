@@ -7,8 +7,6 @@ import NotFound from "./pages/NotFound";
 function App() {
   return (
     <>
-      <div>리액트 프로젝트!</div>
-
       <div className="wrapper">
         <Routes>
           <Route path="/" element={<Home />} />
