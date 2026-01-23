@@ -1,0 +1,18 @@
+.login-page {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: 5rem;
+}
+
+.login-page > div {
+  flex: 1;
+}
+
+.login-page .login-img-wrap {
+  text-align: right;
+}
+
+.login-page img {
+  border-radius: 20rem;
+}
