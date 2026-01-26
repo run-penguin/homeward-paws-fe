@@ -9,3 +9,8 @@
   width: 20rem;
   margin: auto;
 }
+
+.login-list .kakao-login {
+  border: none;
+  background: none;
+}
