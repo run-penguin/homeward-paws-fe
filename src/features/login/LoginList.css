@@ -5,6 +5,40 @@
   margin-top: 3rem;
 }
 
+.login-list .id-login-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 27rem;
+  margin: auto;
+  gap: 2rem;
+}
+
+/* 아이디, 비밀번호 */
+.login-list .id-login-wrap > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-list .id-login-wrap input {
+  padding: 1.5rem 2rem;
+}
+
+.login-list .id-login-wrap input:nth-child(1) {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.login-list .id-login-wrap input:nth-child(2) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: none;
+}
+
+/* 로그인 버튼*/
+.login-list .id-login-wrap button {
+  border: none;
+}
+
 .login-list button {
   width: 20rem;
   margin: auto;

@@ -22,7 +22,7 @@ function KakaoCallback() {
 
   return (
     <div>
-      <p>로그인 처리중...</p>
+      <p>Kakao 로그인 처리중...</p>
     </div>
   );
 }

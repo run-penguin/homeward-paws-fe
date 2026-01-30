@@ -9,9 +9,9 @@ const Login = () => {
         <img src={logo} alt="Logo" />
       </div>
 
-      <div className="login-img-wrap">
+      {/* <div className="login-img-wrap">
         <img src="/src/assets/hp-login.png" />
-      </div>
+      </div> */}
 
       <div>
         <LoginList />

@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import KakaoCallback from "./features/login/KakaoCallback";
+import GoogleCallback from "./features/login/GoogleCallback";
 
 function App() {
   return (
@@ -13,6 +14,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/auth/callback" element={<KakaoCallback />} />
+          <Route
+            path="/api/auth/google/callback"
+            element={<GoogleCallback />}
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
