@@ -33,9 +33,7 @@
     box-shadow 0.218s;
   vertical-align: middle;
   white-space: nowrap;
-  width: auto;
-  max-width: 400px;
-  min-width: min-content;
+  width: 100%;
 }
 
 .gsi-material-button .gsi-material-button-icon {
@@ -107,11 +105,6 @@
   box-shadow:
     0 1px 2px 0 rgba(60, 64, 67, 0.3),
     0 1px 3px 1px rgba(60, 64, 67, 0.15);
-}
-
-.gsi-material-button:not(:disabled):hover .gsi-material-button-state {
-  background-color: #303030;
-  opacity: 8%;
 }
 
 .gsi-material-button-icon svg {

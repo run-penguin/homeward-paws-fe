@@ -1,5 +1,5 @@
 import "./LoginList.css";
-import KakaoLoginButton from "../../assets/kakao_login_medium_narrow.png";
+import KakaoLoginButton from "../../components/login/KakaoLoginButton";
 import GoogleLoginButton from "../../components/login/GoogleLoginButton";
 
 const LoginList = () => {
@@ -28,9 +28,8 @@ const LoginList = () => {
         <button type="button">로그인</button>
       </div>
 
-      <button type="button" onClick={onClickKakaoLogin} className="kakao-login">
-        <img src={KakaoLoginButton} />
-      </button>
+      <KakaoLoginButton onClick={onClickKakaoLogin} />
+
       <button type="button">네이버로 로그인</button>
 
       <GoogleLoginButton onClick={onClickGoogleLogin} />

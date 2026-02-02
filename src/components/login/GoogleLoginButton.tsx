@@ -35,9 +35,8 @@ const GoogleLoginButton = ({ onClick }: ButtonProps) => {
           </svg>
         </div>
         <span className="gsi-material-button-contents">
-          Google 계정으로 계속하기
+          Google 계정으로 로그인
         </span>
-        {/* <span className="display: none;">Continue with Google</span> */}
       </div>
     </button>
   );
