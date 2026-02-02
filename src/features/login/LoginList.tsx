@@ -33,14 +33,34 @@ const LoginList = () => {
           <input type="password" placeholder="비밀번호" />
         </div>
 
-        <button type="button">로그인</button>
+        <div className="find-wrap">
+          <div className="blank"></div>
+          <span>아이디 찾기</span>
+          <span>|</span>
+          <span>비밀번호 찾기</span>
+        </div>
+
+        <div className="button-wrap">
+          <button type="button" className="login">
+            일반 로그인
+          </button>
+          <button type="button" className="join">
+            일반 회원가입
+          </button>
+        </div>
       </div>
 
-      <KakaoLoginButton onClick={onClickKakaoLogin} />
+      <div className="social-login-wrap">
+        <div className="social-login-title">
+          <div></div>
+          <span>간편 로그인 / 회원 가입</span>
+          <div></div>
+        </div>
 
-      <NaverLoginButton onClick={onClickNaverLogin} />
-
-      <GoogleLoginButton onClick={onClickGoogleLogin} />
+        <KakaoLoginButton onClick={onClickKakaoLogin} />
+        <NaverLoginButton onClick={onClickNaverLogin} />
+        <GoogleLoginButton onClick={onClickGoogleLogin} />
+      </div>
     </div>
   );
 };
