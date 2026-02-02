@@ -40,12 +40,3 @@
 .login-list .id-login-wrap button {
   border: none;
 }
-
-.login-list button {
-  margin: auto;
-}
-
-.login-list .kakao-login {
-  border: none;
-  background: none;
-}

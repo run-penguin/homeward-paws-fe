@@ -1,26 +1,27 @@
-.login-list .kakao-login {
-  background-color: #fee500;
+.login-list .naver-login {
+  background-color: #03a94d;
   border-radius: 6px;
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 0 1.2rem;
+  padding: 0 1.5rem;
   height: 3.8rem;
   border: none;
 }
 
-.login-list .kakao-login svg {
-  width: 2rem;
+.login-list .naver-login svg {
+  width: 1.5rem;
 }
 
-.login-list .kakao-login div {
+.login-list .naver-login div {
   flex: 1;
   font-family: "Roboto", arial, sans-serif;
   font-weight: 500;
   font-size: 14px;
+  color: #ffffff;
 }
 
-.login-list .kakao-login:not(:disabled):hover {
+.login-list .naver-login:not(:disabled):hover {
   -webkit-box-shadow:
     0 1px 2px 0 rgba(60, 64, 67, 0.3),
     0 1px 3px 1px rgba(60, 64, 67, 0.15);

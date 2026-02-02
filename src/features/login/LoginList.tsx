@@ -1,6 +1,7 @@
 import "./LoginList.css";
 import KakaoLoginButton from "../../components/login/KakaoLoginButton";
 import GoogleLoginButton from "../../components/login/GoogleLoginButton";
+import NaverLoginButton from "../../components/login/NaverLoginButton";
 
 const LoginList = () => {
   const onClickKakaoLogin = () => {
@@ -17,6 +18,13 @@ const LoginList = () => {
     window.location.href = GOOGLE_AUTH_URI;
   };
 
+  const onClickNaverLogin = () => {
+    const CLIENT_ID = import.meta.env.VITE_NAVER_CLIENT_ID;
+    const REDIRECT_URI = import.meta.env.VITE_NAVER_REDIRECT_URI;
+    const NAVER_AUTH_URI = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&state=naver_login`;
+    window.location.href = NAVER_AUTH_URI;
+  };
+
   return (
     <div className="login-list">
       <div className="id-login-wrap">
@@ -30,7 +38,7 @@ const LoginList = () => {
 
       <KakaoLoginButton onClick={onClickKakaoLogin} />
 
-      <button type="button">네이버로 로그인</button>
+      <NaverLoginButton onClick={onClickNaverLogin} />
 
       <GoogleLoginButton onClick={onClickGoogleLogin} />
     </div>
