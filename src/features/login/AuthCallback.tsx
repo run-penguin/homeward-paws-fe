@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-function KakaoCallback() {
+// naver, kakao 공통 처리
+function AuthCallback() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
@@ -10,7 +11,7 @@ function KakaoCallback() {
 
     if (token) {
       // 토큰을 localStorage에 저장
-      localStorage.setItem("accessToken", token);
+      localStorage.setItem("token", token);
 
       // 메인 페이지로 이동
       navigate("/");
@@ -27,4 +28,4 @@ function KakaoCallback() {
   );
 }
 
-export default KakaoCallback;
+export default AuthCallback;
