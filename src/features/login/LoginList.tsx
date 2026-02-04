@@ -2,6 +2,7 @@ import "./LoginList.css";
 import KakaoLoginButton from "../../components/login/KakaoLoginButton";
 import GoogleLoginButton from "../../components/login/GoogleLoginButton";
 import NaverLoginButton from "../../components/login/NaverLoginButton";
+import { useNavigate } from "react-router-dom";
 
 const LoginList = () => {
   const onClickKakaoLogin = () => {
@@ -25,6 +26,12 @@ const LoginList = () => {
     window.location.href = NAVER_AUTH_URI;
   };
 
+  const navigate = useNavigate();
+
+  const onClickJoin = () => {
+    navigate("/join");
+  };
+
   return (
     <div className="login-list">
       <div className="id-login-wrap">
@@ -44,7 +51,7 @@ const LoginList = () => {
           <button type="button" className="login">
             일반 로그인
           </button>
-          <button type="button" className="join">
+          <button type="button" className="join" onClick={onClickJoin}>
             일반 회원가입
           </button>
         </div>
