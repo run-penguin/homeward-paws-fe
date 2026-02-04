@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:300);
+@import url("https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&display=swap");
 
 html,
 body {
@@ -6,7 +6,7 @@ body {
   height: 100%;
 
   font-size: 10px;
-  font-family: "NanumSquareRound";
+  font-family: "Asta Sans", sans-serif;
 }
 
 #root,
@@ -15,17 +15,76 @@ body {
   height: 100%;
 }
 
-input {
+input,
+select {
   border: 1px solid #dfdfdf;
-  padding: 0.5rem 1rem;
+  padding: 1rem 1rem;
   border-radius: 0.5rem;
 }
 
 label,
-input {
-  font-size: 1.4rem;
+input,
+span,
+select {
+  font-size: 1.5rem;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper select {
+  /* 기본 화살표 제거 */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  padding-right: 3rem;
+}
+
+.select-wrapper::after {
+  font-family: "Font Awesome 6 Free";
+  content: "\f0d7";
+  font-weight: 600;
+  position: absolute;
+  right: 10px;
+  top: 0;
+  pointer-events: none;
+  color: #666;
+  font-size: 1.8rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 button {
   cursor: pointer;
+}
+
+input[type="checkbox"] {
+  width: 1.8rem;
+  height: 1.8rem;
+  cursor: pointer;
+  margin: 0;
+
+  appearance: none;
+  background-color: #ffffff;
+  position: relative;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #fa96a0;
+  border: 1px solid #fa96a0;
+}
+
+input[type="checkbox"]:checked::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 14px;
+  font-family: "Font Awesome 6 Free";
+  content: "\f00c";
+  font-weight: 600;
 }

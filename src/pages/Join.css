@@ -1,0 +1,102 @@
+.join-page {
+  width: fit-content;
+  margin: auto;
+  box-shadow: rgba(100, 100, 100, 0.2) 0 0 2.9rem 0;
+  padding: 3rem;
+  border-radius: 0.5rem;
+}
+
+.join-page .page-title {
+  font-size: 1.9rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* 회원 가입 폼 */
+.join-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.join-page form > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.join-page form > div > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.join-page form label,
+.join-page form span {
+  margin-bottom: 0.8rem;
+}
+
+.join-page form label {
+  font-weight: 700;
+}
+
+/* 항목 안내 */
+.join-page .desc {
+  font-size: 1.3rem;
+  color: #808080;
+}
+
+/* 필수 항목 안내 */
+.join-page .warn-info {
+  color: #ff5b5b;
+  font-size: 1.4rem;
+  margin: 0.7rem 0 0 0.5rem;
+}
+
+/* 약관 동의 */
+.join-page .agree-wrapper {
+  background-color: #f7f7f7;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 0.5rem;
+  gap: 1.5rem;
+}
+
+.join-page .agree-wrapper > div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.join-page .agree-wrapper > div > label {
+  font-size: 1.4rem;
+  margin-bottom: 0;
+  padding-left: 0.5rem;
+  flex: 1;
+  cursor: pointer;
+}
+
+.join-page .agree-wrapper > div:not(:nth-child(1)) > label {
+  font-weight: 500;
+}
+
+/* 약관 필수 항목 */
+.join-page .agree-wrapper .agree-required {
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+  color: #0059ff;
+}
+
+/* 회원 가입 버튼 */
+.join-page button {
+  border: none;
+  background-color: #fa96a0;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 1.5rem 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
