@@ -100,3 +100,15 @@
   font-size: 1.5rem;
   font-weight: 500;
 }
+
+/* 이메일 인증 버튼 */
+.join-page .check-email {
+  border: 1px solid #fa96a0;
+  background-color: #ffffff;
+  color: #fa96a0;
+  margin-top: 1rem;
+}
+
+.join-page .check-email:hover {
+  background-color: #f8ecee;
+}

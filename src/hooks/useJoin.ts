@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { API_URL } from "../config/api.ts";
 
 interface SignupForm {
   email: string;
@@ -29,7 +31,8 @@ export const useSignupForm = () => {
 
   const [errors, setErrors] = useState<FormErrors>({});
 
-  const handleChange = (
+  // 값이 변경될 때
+  const onChange = async (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value, type } = e.target;
@@ -56,6 +59,34 @@ export const useSignupForm = () => {
     }
   };
 
+  // 이메일 중복 체크
+  const checkEmail = async (fullEmail: string) => {
+    try {
+      const emailCheckResponse = await axios.get(`${API_URL}/api/join/email`, {
+        params: {
+          email: fullEmail,
+        },
+      });
+
+      console.log(emailCheckResponse.data);
+    } catch (error) {
+      console.error("이메일 체크 에러:", error);
+      alert("서버 오류가 발생했습니다.");
+    }
+  };
+
+  useEffect(() => {
+    const checkEmailDebounced = setTimeout(async () => {
+      if (formData.email && formData.emailDomain) {
+        const fullEmail = `${formData.email}@${formData.emailDomain}`;
+        await checkEmail(fullEmail);
+      }
+    }, 500); // 500ms 후에 실행 (debounce)
+
+    return () => clearTimeout(checkEmailDebounced);
+  }, [formData.email, formData.emailDomain]);
+
+  // 유효성 검사
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
@@ -98,36 +129,33 @@ export const useSignupForm = () => {
 
     if (!validateForm()) return;
 
-    // 이메일 중복 체크 필요할듯?
-
-    // try {
-    //   const response = await fetch("/api/signup", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({
-    //       email: `${formData.email}@${formData.emailDomain}`,
-    //       id: formData.id,
-    //       password: formData.password,
-    //     }),
-    //   });
-
-    //   if (response.ok) {
-    //     alert("회원가입이 완료되었습니다!");
-    //     // 페이지 이동 등
-    //   } else {
-    //     const data = await response.json();
-    //     alert(data.message || "회원가입에 실패했습니다.");
-    //   }
-    // } catch (error) {
-    //   console.error("회원가입 에러:", error);
-    //   alert("서버 오류가 발생했습니다.");
-    // }
+    try {
+      //   const response = await fetch("/api/signup", {
+      //     method: "POST",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify({
+      //       email: `${formData.email}@${formData.emailDomain}`,
+      //       id: formData.id,
+      //       password: formData.password,
+      //     }),
+      //   });
+      //   if (response.ok) {
+      //     alert("회원가입이 완료되었습니다!");
+      //     // 페이지 이동 등
+      //   } else {
+      //     const data = await response.json();
+      //     alert(data.message || "회원가입에 실패했습니다.");
+      //   }
+    } catch (error) {
+      console.error("회원가입 에러:", error);
+      alert("서버 오류가 발생했습니다.");
+    }
   };
 
   return {
     formData,
     errors,
-    handleChange,
+    onChange,
     handleSubmit,
   };
 };

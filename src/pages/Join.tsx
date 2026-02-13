@@ -14,7 +14,7 @@ const domainList = [
 ];
 
 const Join = () => {
-  const { formData, errors, handleChange, handleSubmit } = useSignupForm();
+  const { formData, errors, onChange, handleSubmit } = useSignupForm();
 
   return (
     <div className="join-page">
@@ -28,14 +28,14 @@ const Join = () => {
               type="text"
               name="email"
               value={formData.email}
-              onChange={handleChange}
+              onChange={onChange}
             />
             <span>@</span>
             <div className="select-wrapper">
               <select
                 name="emailDomain"
                 value={formData.emailDomain}
-                onChange={handleChange}
+                onChange={onChange}
               >
                 {domainList.map((domain, idx) => (
                   <option key={idx}>{domain}</option>
@@ -47,6 +47,10 @@ const Join = () => {
           {errors.email && (
             <span className="warn-info">필수 입력 항목입니다.</span>
           )}
+
+          <button type="button" className="check-email">
+            이메일 인증하기
+          </button>
         </div>
 
         <div>
@@ -55,7 +59,7 @@ const Join = () => {
             type="text"
             name="id"
             value={formData.id}
-            onChange={handleChange}
+            onChange={onChange}
           />
           {errors.id && (
             <span className="warn-info">필수 입력 항목입니다.</span>
@@ -71,7 +75,7 @@ const Join = () => {
             type="passward"
             name="password"
             value={formData.password}
-            onChange={handleChange}
+            onChange={onChange}
           />
           {errors.password && (
             <span className="warn-info">필수 입력 항목입니다.</span>
@@ -84,7 +88,7 @@ const Join = () => {
             type="password"
             name="passwordConfirm"
             value={formData.passwordConfirm}
-            onChange={handleChange}
+            onChange={onChange}
           />
           {errors.passwordConfirm && (
             <span className="warn-info">
@@ -103,7 +107,7 @@ const Join = () => {
                 id="agreeAll"
                 name="agreeAll"
                 checked={formData.agreeAll}
-                onChange={handleChange}
+                onChange={onChange}
               />
               <label htmlFor="agreeAll">전체 동의</label>
             </div>
@@ -114,7 +118,7 @@ const Join = () => {
                 id="agreeAge"
                 name="agreeAge"
                 checked={formData.agreeAge}
-                onChange={handleChange}
+                onChange={onChange}
               />
               <label htmlFor="agreeAge">
                 만 14세 이상입니다<span className="agree-required">(필수)</span>
@@ -127,7 +131,7 @@ const Join = () => {
                 id="agreeTerms"
                 name="agreeTerms"
                 checked={formData.agreeTerms}
-                onChange={handleChange}
+                onChange={onChange}
               />
               <label htmlFor="agreeTerms">
                 이용 약관<span className="agree-required">(필수)</span>
