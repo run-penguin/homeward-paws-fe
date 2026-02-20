@@ -14,7 +14,34 @@ const domainList = [
 ];
 
 const Join = () => {
-  const { formData, errors, onChange, handleSubmit } = useSignupForm();
+  const {
+    formData,
+    errors,
+    emailCheck,
+    onChange,
+    handleEmailVerify,
+    handleSubmit,
+  } = useSignupForm();
+
+  const renderEmailMessage = () => {
+    if (errors.email)
+      return <span className="warn-info">필수 입력 항목입니다.</span>;
+
+    if (emailCheck.status === "available")
+      return (
+        <span
+          className={
+            emailCheck.status === "available" ? "success-info" : "warn-info"
+          }
+        >
+          {emailCheck.message}
+        </span>
+      );
+
+    if (emailCheck.status === "sent")
+      return <span className="success-info">{emailCheck.message}</span>;
+    return null;
+  };
 
   return (
     <div className="join-page">
@@ -44,11 +71,13 @@ const Join = () => {
             </div>
           </div>
 
-          {errors.email && (
-            <span className="warn-info">필수 입력 항목입니다.</span>
-          )}
+          {renderEmailMessage()}
 
-          <button type="button" className="check-email">
+          <button
+            type="button"
+            className="check-email"
+            onClick={handleEmailVerify}
+          >
             이메일 인증하기
           </button>
         </div>

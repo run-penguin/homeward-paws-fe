@@ -29,6 +29,11 @@ export const useSignupForm = () => {
     agreeTerms: false,
   });
 
+  const [emailCheck, setEmailCheck] = useState<{
+    status: "idle" | "checking" | "available" | "taken" | "sent";
+    message: string;
+  }>({ status: "idle", message: "" });
+
   const [errors, setErrors] = useState<FormErrors>({});
 
   // 값이 변경될 때
@@ -62,19 +67,24 @@ export const useSignupForm = () => {
   // 이메일 중복 체크
   const checkEmail = async (fullEmail: string) => {
     try {
-      const emailCheckResponse = await axios.get(`${API_URL}/api/join/email`, {
+      setEmailCheck({ status: "checking", message: "" });
+      const res = await axios.get(`${API_URL}/api/join/email`, {
         params: {
           email: fullEmail,
         },
       });
 
-      console.log(emailCheckResponse.data);
+      setEmailCheck({
+        status: res.data.data ? "available" : "taken",
+        message: res.data.message,
+      });
     } catch (error) {
       console.error("이메일 체크 에러:", error);
       alert("서버 오류가 발생했습니다.");
     }
   };
 
+  // 이메일 변경 감지
   useEffect(() => {
     const checkEmailDebounced = setTimeout(async () => {
       if (formData.email && formData.emailDomain) {
@@ -124,6 +134,23 @@ export const useSignupForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  const handleEmailVerify = async () => {
+    if (emailCheck.status !== "available") return;
+
+    try {
+      const fullEmail = `${formData.email}@${formData.emailDomain}`;
+
+      const res = await axios.post(`${API_URL}/api/join/email/send`, {
+        email: fullEmail,
+      });
+
+      setEmailCheck({ status: "sent", message: res.data.message });
+    } catch (error) {
+      console.error("이메일 인증하기 에러:", error);
+      alert("서버 오류가 발생했습니다.");
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -155,7 +182,9 @@ export const useSignupForm = () => {
   return {
     formData,
     errors,
+    emailCheck,
     onChange,
+    handleEmailVerify,
     handleSubmit,
   };
 };

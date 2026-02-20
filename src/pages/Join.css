@@ -48,10 +48,18 @@
 }
 
 /* 필수 항목 안내 */
-.join-page .warn-info {
-  color: #ff5b5b;
+.join-page .warn-info,
+.join-page .success-info {
   font-size: 1.4rem;
   margin: 0.7rem 0 0 0.5rem;
+}
+
+.join-page .warn-info {
+  color: #ff5b5b;
+}
+
+.join-page .success-info {
+  color: #0ab930;
 }
 
 /* 약관 동의 */
