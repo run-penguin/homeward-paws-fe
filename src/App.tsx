@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound";
 import AuthCallback from "./features/login/AuthCallback";
 import GoogleCallback from "./features/login/GoogleCallback";
 import Join from "./pages/Join";
+import VerifiedEmail from "./pages/VerifiedEmail";
 import Layout from "./components/Layout";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/join" element={<Join />} />
+            <Route path="/verified/email" element={<VerifiedEmail />} />
           </Route>
         </Routes>
       </div>
