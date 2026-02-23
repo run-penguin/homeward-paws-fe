@@ -27,16 +27,15 @@ const Join = () => {
     if (errors.email)
       return <span className="warn-info">필수 입력 항목입니다.</span>;
 
-    if (emailCheck.status === "available")
-      return (
-        <span
-          className={
-            emailCheck.status === "available" ? "success-info" : "warn-info"
-          }
-        >
-          {emailCheck.message}
-        </span>
-      );
+    return (
+      <span
+        className={
+          emailCheck.status === "available" ? "success-info" : "warn-info"
+        }
+      >
+        {emailCheck.message}
+      </span>
+    );
 
     if (emailCheck.status === "sent")
       return <span className="success-info">{emailCheck.message}</span>;
