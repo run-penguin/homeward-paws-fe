@@ -30,7 +30,7 @@ export const useSignupForm = () => {
   });
 
   const [emailCheck, setEmailCheck] = useState<{
-    status: "idle" | "checking" | "available" | "taken" | "sent";
+    status: "idle" | "checking" | "available" | "taken" | "sent" | "verified";
     message: string;
   }>({ status: "idle", message: "" });
 
@@ -134,6 +134,7 @@ export const useSignupForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // 인증 메일 발송
   const handleEmailVerify = async () => {
     if (emailCheck.status !== "available") return;
 
@@ -145,6 +146,24 @@ export const useSignupForm = () => {
       });
 
       setEmailCheck({ status: "sent", message: res.data.message });
+    } catch (error) {
+      console.error("이메일 인증하기 에러:", error);
+      alert("서버 오류가 발생했습니다.");
+    }
+  };
+
+  // 인증 메일 완료
+  const handleEmailVerified = async () => {
+    try {
+      const fullEmail = `${formData.email}@${formData.emailDomain}`;
+
+      const res = await axios.get(`${API_URL}/api/join/email/verified`, {
+        params: {
+          email: fullEmail,
+        },
+      });
+
+      setEmailCheck({ status: "verified", message: res.data.data });
     } catch (error) {
       console.error("이메일 인증하기 에러:", error);
       alert("서버 오류가 발생했습니다.");
@@ -185,6 +204,7 @@ export const useSignupForm = () => {
     emailCheck,
     onChange,
     handleEmailVerify,
+    handleEmailVerified,
     handleSubmit,
   };
 };

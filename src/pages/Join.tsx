@@ -20,6 +20,7 @@ const Join = () => {
     emailCheck,
     onChange,
     handleEmailVerify,
+    handleEmailVerified,
     handleSubmit,
   } = useSignupForm();
 
@@ -29,14 +30,48 @@ const Join = () => {
 
     switch (emailCheck.status) {
       case "available":
-        return <span className={"success-info"}>{emailCheck.message}</span>;
+        return <span className="success-info">사용 가능한 이메일입니다.</span>;
       case "taken":
-        return <span className={"warn-info"}>{emailCheck.message}</span>;
+        return <span className="warn-info">이미 사용중인 이메일입니다.</span>;
       case "sent":
-        return <span className="success-info">{emailCheck.message}</span>;
+        return (
+          <span className="success-info">
+            인증 메일을 발송했습니다. 인증 완료 후 아래 버튼을 클릭해 주세요.
+          </span>
+        );
     }
 
     return null;
+  };
+
+  const renderEmailButton = () => {
+    switch (emailCheck.status) {
+      case "idle":
+      case "checking":
+      case "available":
+      case "taken":
+        return (
+          <button
+            type="button"
+            className="check-email"
+            onClick={handleEmailVerify}
+          >
+            이메일 인증하기
+          </button>
+        );
+      case "sent":
+        return (
+          <button
+            type="button"
+            className="check-email"
+            onClick={handleEmailVerified}
+          >
+            이메일 인증완료
+          </button>
+        );
+      default:
+        return null;
+    }
   };
 
   return (
@@ -66,16 +101,8 @@ const Join = () => {
               </select>
             </div>
           </div>
-
           {renderEmailMessage()}
-
-          <button
-            type="button"
-            className="check-email"
-            onClick={handleEmailVerify}
-          >
-            이메일 인증하기
-          </button>
+          {renderEmailButton()}
         </div>
 
         <div>
